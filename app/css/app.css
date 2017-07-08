@@ -1,25 +1,40 @@
 /* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.mouse {
+  cursor:pointer;
 }
 
-.menu:before {
-  content: "[";
+.colorCatchai {
+  color:#f4476b !important;
 }
 
-.menu:after {
-  content: "]";
+a .catchai{
+  color:#f4476b !important;
 }
 
-.menu > li {
-  display: inline;
+/*Barra de progreso*/
+.progress-bar-catchai {
+  background-color: #f4476b !important;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.catchai {
+  background-color: #f4476b !important;
+  border-color: #f4476b !important;
+}
+
+.catchai:hover {
+  background:#eb3b60 !important;
+}
+
+.page-header {
+  color:#f4476b;
+}
+
+.navbar {
+	color: #fff;
+	background-color: #f4476b !important;
+	border-color: #eb3b60 !important;
+}
+
+.navbar-brand {
+	color: #fff !important;	
 }

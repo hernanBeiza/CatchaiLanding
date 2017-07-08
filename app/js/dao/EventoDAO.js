@@ -1,11 +1,11 @@
 // factory
-angular.module("catchaiApp.GaleriaDAO",['catchaiApp.ImagenModel'])
-.factory('GaleriaDAO', function($http,$q,ENV,ImagenModel){ 
+angular.module("catchaiApp.EventoDAO",['catchaiApp.EventoModel'])
+.factory('EventoDAO', function($http,$q,ENV,EventoModel){ 
     return {
-        obtenerConPagina: function(idevento,pagina){            
-            console.info("GaleriaDAO: obtenerConPagina();");
+        obtenerConID: function(idevento){            
+            console.info("EventoDAO: obtenerConID();");
             var deferred = $q.defer();
-            var ruta = ENV.APIEndPoint+"/obtenerImagenes.php?idevento="+idevento+"&pagina="+pagina+"&valid=1";
+            var ruta = ENV.APIEndPoint+"/obtenerEvento.php?idevento="+idevento;
             console.log(ruta);
             $http({
                 method: 'GET',
@@ -20,26 +20,18 @@ angular.module("catchaiApp.GaleriaDAO",['catchaiApp.ImagenModel'])
                     //token:token
                 },
             }).then(function enviarComplete(json) {
-                console.info("GaleriaDAO.js: enviarComplete");
+                console.info("EventoDAO.js: enviarComplete");
                 console.info(json.data);
                 if(json.data.result){
-                    var imagenes = [];
-                    for(var i=0; i<json.data.imagenes.length; i++) {
-                        var row = json.data.imagenes[i];
-                        var model = new ImagenModel(row.idImagen,row.idEvento,row.descripcion,row.ruta,row.valid);
-                        imagenes.push(model);
-                    }
-                    if(imagenes.length>0){
-                        deferred.resolve({result:true,imagenes:imagenes,paginas:json.data.paginas});                            
-                    } else {
-                        deferred.reject({result:false,imagenes:null,errores:json.data.errores});
-                    }
+                    var row = json.data.evento;
+                    var model = new EventoModel(row.idEvento,row.idAdministrador,row.fecha,row.nombre,row.valid);
+                    deferred.resolve({result:true,evento:model});
                 } else {
                     console.error(json.data.errores);          
                     deferred.reject({result:false,errores:json.data.errores});
                 }
             }, function enviarError(data){
-                console.info("GaleriaDAO.js: enviarError");
+                console.info("EventoDAO.js: enviarError");
                 console.error(data);
                 /*
                 console.log(status);

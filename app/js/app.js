@@ -4,9 +4,9 @@
 var app = angular.module('catchaiApp', [
 	'ngRoute',
 	'constantes',
-  'catchaiApp.ImagenModel',
-  'catchaiApp.GaleriaController',
-  'catchaiApp.GaleriaDAO',
+  'catchaiApp.ImagenModel','catchaiApp.EventoModel',
+  'catchaiApp.GaleriaController','catchaiApp.DetalleController',
+  'catchaiApp.GaleriaDAO','catchaiApp.EventoDAO',
 	'ngBootbox','ui.bootstrap'
 ]);
 
@@ -16,11 +16,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   $locationProvider.hashPrefix('');
 
   $routeProvider.
-  when('/index', {
+  when('/index/:idevento', {
     templateUrl: 'views/galeriaView.html',
     //controller: 'IndexController'
   }).
-  otherwise({redirectTo: '/index'});
+  otherwise({redirectTo: '/index/1'});
 
 }]).run(function($rootScope,ENV){
 

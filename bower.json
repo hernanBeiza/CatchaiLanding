@@ -1,8 +1,8 @@
 {
   "name": "catchailanding",
   "description": "Plataforma de Landing de Catchai",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "version": "0.1.0",
+  "homepage": "http://www.catchai.cl",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -10,7 +10,6 @@
     "angular-route": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap": "^3.3.7",
-    "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "bootbox.js": "bootbox#^4.4.0",
