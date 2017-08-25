@@ -4,21 +4,48 @@
 }
 
 .colorCatchai {
-  color:#f4476b !important;
+  color:#e2004a !important;
 }
 
 a .catchai{
-  color:#f4476b !important;
+  color:#e2004a !important;
+}
+
+a .active {
+  background-color: #e2004a;  
 }
 
 /*Barra de progreso*/
 .progress-bar-catchai {
-  background-color: #f4476b !important;
+  background-color: #e2004a !important;
 }
 
+/* Paginación inferior */
+.pagination a {
+  color:#e2004a;  
+}
+
+.pagination > li > a {
+  color:#e2004a !important;
+  cursor:pointer !important;
+}
+
+.pagination > li.active > a {
+  background-color: #e2004a; 
+  color: #fff !important;   
+  border: 1px #e2004a solid;
+}
+
+.pagination > li.active > a:hover {
+  background-color: #fff; 
+  color: #e2004a !important;   
+  border: 1px #e2004a solid;
+}
+
+
 .catchai {
-  background-color: #f4476b !important;
-  border-color: #f4476b !important;
+  background-color: #e2004a !important;
+  border-color: #e2004a !important;
 }
 
 .catchai:hover {
@@ -26,15 +53,24 @@ a .catchai{
 }
 
 .page-header {
-  color:#f4476b;
+  color:#e2004a;
 }
 
 .navbar {
 	color: #fff;
-	background-color: #f4476b !important;
-	border-color: #eb3b60 !important;
+	background-color: #e2004a !important;
+	border-color: #e2004a !important;
 }
 
 .navbar-brand {
 	color: #fff !important;	
+}
+
+/* Ventana Modal */
+.modal-header .modal-title {
+  color:#e2004a;  
+}
+
+.modal-header .close {
+  color:#e2004a;  
 }

@@ -5,7 +5,7 @@ angular.module("catchaiApp.GaleriaDAO",['catchaiApp.ImagenModel'])
         obtenerConPagina: function(idevento,pagina){            
             console.info("GaleriaDAO: obtenerConPagina();");
             var deferred = $q.defer();
-            var ruta = ENV.APIEndPoint+"/obtenerImagenes.php?idevento="+idevento+"&pagina="+pagina+"&valid=1";
+            var ruta = ENV.APIEndPoint+"/obtenerImagenes.php?idevento="+idevento+"&pag="+pagina+"&valid=1";
             console.log(ruta);
             $http({
                 method: 'GET',
@@ -30,7 +30,7 @@ angular.module("catchaiApp.GaleriaDAO",['catchaiApp.ImagenModel'])
                         imagenes.push(model);
                     }
                     if(imagenes.length>0){
-                        deferred.resolve({result:true,imagenes:imagenes,paginas:json.data.paginas});                            
+                        deferred.resolve({result:true,imagenes:imagenes,totalPaginas:json.data.totalPaginas});                            
                     } else {
                         deferred.reject({result:false,imagenes:null,errores:json.data.errores});
                     }

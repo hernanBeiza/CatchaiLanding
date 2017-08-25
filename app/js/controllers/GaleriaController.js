@@ -41,19 +41,22 @@ angular.module('catchaiApp.GaleriaController', ['ngRoute'])
 
 
 	$scope.cargarGIFS = function(pagina){
+		console.log("cargarGifs",pagina);
+		$scope.model.errores = "";
 		$scope.model.cargando = true;		
-		$scope.model.pagina = pagina;
-	  	GaleriaDAO.obtenerConPagina($scope.model.evento.idevento,$scope.model.pagina).then(function(data){
+		$scope.model.actualPagina = pagina;
+	  	GaleriaDAO.obtenerConPagina($scope.model.evento.idevento,$scope.model.actualPagina).then(function(data){
 	  		//console.log(data);	  		
 			$scope.model.cargando = false;
 	  		if(data.result){
 	  			$scope.model.imagenes = data.imagenes;
-	  			$scope.model.paginas = data.paginas;
+	  			$scope.model.totalPaginas = data.totalPaginas;
 	  		} else {
 		        $ngBootbox.alert(data.errores).then(function() { });
 	  		}
 	  	},function(data){
 	  		console.error(data);
+	  		$scope.model.imagenes = [];
 			$scope.model.cargando = false;
 			$scope.model.errores = "Aún no hay gifs de este evento. Vuelve pronto =)";
 	  	});
@@ -89,6 +92,25 @@ angular.module('catchaiApp.GaleriaController', ['ngRoute'])
 		
 		$ngBootbox.customDialog(options);
 	}
+
+	$scope.gifsNext = function(){
+		if($scope.model.actualPagina<$scope.model.totalPaginas){
+			$scope.model.actualPagina++;
+			$scope.cargarGIFS($scope.model.actualPagina);
+		}
+	}
+
+	$scope.gifsPrev = function(){
+		if($scope.model.actualPagina>1){
+			$scope.model.actualPagina--;
+			$scope.cargarGIFS($scope.model.actualPagina);
+		}
+	}
+
+	$scope.getNumber = function(num) {
+    	return new Array(num);   
+	}
+
 
   }
 
